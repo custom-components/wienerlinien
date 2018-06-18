@@ -1,6 +1,6 @@
 # custom_component to get info about next departures.
 ![Version](https://img.shields.io/badge/version-1.1.1-green.svg?style=for-the-badge) ![mantained](https://img.shields.io/maintenance/yes/2018.svg?style=for-the-badge)   
-A component which allows you to get information about next departure from spesified stop. 
+A platform which allows you to get information about next departure from spesified stop. 
   
 To get started put `/custom_components/sensor/wienerlinien.py` here:
 `<config directory>/custom_components/sensor/wienerlinien.py`  
@@ -26,6 +26,6 @@ key | description
 You can find out the Stop ID (rbl number) thanks to [Matthias Bendel](https://github.com/mabe-at) [https://till.mabe.at/rbl/](https://till.mabe.at/rbl/)
 You can also request your own API key [here](https://www.wien.gv.at/formularserver2/user/formular.aspx?pid=3b49a23de1ff43efbc45ae85faee31db&pn=B0718725a79fb40f4bb4b7e0d2d49f1d1)
 [Mainpage of the API](https://www.data.gv.at/katalog/dataset/add66f20-d033-4eee-b9a0-47019828e698)  
-This component is using the [Wienerlinien API](http://www.wienerlinien.at) API to get the information.
+This platform is using the [Wienerlinien API](http://www.wienerlinien.at) API to get the information.
 'Datenquelle: Stadt Wien – data.wien.gv.at'
 Lizenz (CC BY 3.0 AT)

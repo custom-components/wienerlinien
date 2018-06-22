@@ -2,7 +2,7 @@
 ![Version](https://img.shields.io/badge/version-1.1.1-green.svg?style=for-the-badge) ![mantained](https://img.shields.io/maintenance/yes/2018.svg?style=for-the-badge)   
 A platform which allows you to get information about next departure from spesified stop. 
   
-To get started put `/custom_components/sensor/wienerlinien.py` here:
+To get started put `/custom_components/sensor/wienerlinien.py` here:  
 `<config directory>/custom_components/sensor/wienerlinien.py`  
   
 **Example configuration.yaml:**
@@ -11,6 +11,7 @@ sensor:
   platform: wienerlinien
   apikey: 2190400
   stops:
+    - '4429','3230'
 ```
 **Configuration variables:**  
   

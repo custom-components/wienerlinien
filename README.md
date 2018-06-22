@@ -10,7 +10,7 @@ To get started put `/custom_components/sensor/wienerlinien.py` here:
 sensor:
   platform: wienerlinien
   apikey: 2190400
-  stops: ['4429','3230']
+  stops:
 ```
 **Configuration variables:**  
   

@@ -29,4 +29,5 @@ You can also request your own API key [here](https://www.wien.gv.at/formularserv
 [Mainpage of the API](https://www.data.gv.at/katalog/dataset/add66f20-d033-4eee-b9a0-47019828e698)  
 This platform is using the [Wienerlinien API](http://www.wienerlinien.at) API to get the information.
 'Datenquelle: Stadt Wien – data.wien.gv.at'
-Lizenz (CC BY 3.0 AT)
+Lizenz (CC BY 3.0 AT)  
+Due to how  are importerd, it is normal to see a  error on first boot after adding this, to resolve it, restart Home-Assistant.

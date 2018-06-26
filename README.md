@@ -11,7 +11,8 @@ sensor:
   platform: wienerlinien
   apikey: 2190400
   stops:
-    - '4429','3230'
+    - '4429'
+    - '3230'
 ```
 **Configuration variables:**  
   
@@ -30,4 +31,5 @@ You can also request your own API key [here](https://www.wien.gv.at/formularserv
 This platform is using the [Wienerlinien API](http://www.wienerlinien.at) API to get the information.
 'Datenquelle: Stadt Wien – data.wien.gv.at'
 Lizenz (CC BY 3.0 AT)  
+***
 Due to how `custom_componentes` are importerd, it is normal to see a `ModuleNotFoundError` error on first boot after adding this, to resolve it, restart Home-Assistant.

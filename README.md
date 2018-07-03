@@ -1,7 +1,6 @@
 # custom_component to get info about next departures.
   
-![Version](https://img.shields.io/badge/version-component_version'
-'1.1.1-green.svg?style=for-the-badge) ![mantained](https://img.shields.io/maintenance/yes/2018.svg?style=for-the-badge)   
+![Version](https://img.shields.io/badge/version-1.1.1-green.svg?style=for-the-badge) ![mantained](https://img.shields.io/maintenance/yes/2018.svg?style=for-the-badge)   
 A platform which allows you to get information about next departure from spesified stop. 
   
 To get started put `/custom_components/sensor/wienerlinien.py` here:  
@@ -34,4 +33,4 @@ This platform is using the [Wienerlinien API](http://www.wienerlinien.at) API to
 'Datenquelle: Stadt Wien – data.wien.gv.at'
 Lizenz (CC BY 3.0 AT)  
 ***
-Due to how `custom_componentes` are importerd, it is normal to see a `ModuleNotFoundError` error on first boot after adding this, to resolve it, restart Home-Assistant.
+Due to how `custom_componentes` are loaded, it is normal to see a `ModuleNotFoundError` error on first boot after adding this, to resolve it, restart Home-Assistant.

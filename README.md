@@ -1,12 +1,12 @@
-# custom_component to get info about next departures.
-  
-[![Version](https://img.shields.io/badge/version-1.1.1-green.svg?style=for-the-badge)](#) [![mantained](https://img.shields.io/maintenance/yes/2018.svg?style=for-the-badge)](#) [![maintainer](https://img.shields.io/badge/maintainer-Joakim%20Sørensen%20%40ludeeus-blue.svg?style=for-the-badge)](#)   
-A platform which allows you to get information about next departure from spesified stop. 
+# custom_component to get info about next departures
+
+A platform which allows you to get information about next departure from spesified stop.
   
 To get started put `/custom_components/sensor/wienerlinien.py` here:  
 `<config directory>/custom_components/sensor/wienerlinien.py`  
   
 **Example configuration.yaml:**
+
 ```yaml
 sensor:
   platform: wienerlinien
@@ -15,6 +15,7 @@ sensor:
     - '4429'
     - '3230'
 ```
+
 **Configuration variables:**  
   
 key | description  
@@ -23,7 +24,8 @@ key | description
 **apikey (Required)** | Your API key from wien.gv.at.  
 **stops (Required)** | RBL stop ID's  
   
-#### Sample overview
+## Sample overview
+
 ![Sample overview](overview.png)
   
 You can find out the Stop ID (rbl number) thanks to [Matthias Bendel](https://github.com/mabe-at) [https://till.mabe.at/rbl/](https://till.mabe.at/rbl/)

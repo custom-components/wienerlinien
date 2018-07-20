@@ -12,6 +12,8 @@ from homeassistant.helpers.entity import Entity
 import homeassistant.helpers.config_validation as cv
 from homeassistant.components.sensor import PLATFORM_SCHEMA
 
+__version__ = '1.1.1'
+
 CONF_STOPS = 'stops'
 CONF_APIKEY = 'apikey'
 
@@ -26,7 +28,6 @@ SCAN_INTERVAL = timedelta(seconds=30)
 
 ICON = 'mdi:bus'
 COMPONENT_NAME = 'wienerlinien'
-COMPONENT_VERSION = '1.1.1'
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Required(CONF_APIKEY): cv.string,

@@ -2,8 +2,8 @@
 
 A platform which allows you to get information about next departure from spesified stop.
   
-To get started put `/custom_components/sensor/wienerlinien.py` here:  
-`<config directory>/custom_components/sensor/wienerlinien.py`  
+To get started put `/custom_components/wienerlinien/sensor.py` here:  
+`<config directory>/custom_components/wienerlinien/sensor.py`  
   
 **Example configuration.yaml:**
 

@@ -12,7 +12,7 @@ from homeassistant.helpers.entity import Entity
 import homeassistant.helpers.config_validation as cv
 from homeassistant.components.sensor import PLATFORM_SCHEMA
 
-__version__ = '1.1.1'
+__version__ = '1.1.2'
 
 CONF_STOPS = 'stops'
 CONF_APIKEY = 'apikey'
@@ -27,7 +27,6 @@ ATTR_COMPONENT_VERSION = 'component_version'
 SCAN_INTERVAL = timedelta(seconds=30)
 
 ICON = 'mdi:bus'
-COMPONENT_NAME = 'wienerlinien'
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Required(CONF_APIKEY): cv.string,
@@ -55,8 +54,6 @@ class WienerlinienSensor(Entity):
         self._firstdeparture = 'N/A'
         self._stopID = stopID
         self._apikey = apikey
-        self._component = COMPONENT_NAME
-        self._componentversion = COMPONENT_VERSION
         fetchurl = BASE_URL + '?rbl=' + self._stopID + '&sender=' + self._apikey
         departure = requests.get(fetchurl, timeout=5).json()['data']
         name = departure['monitors'][0]['locationStop']['properties']['title']
@@ -108,6 +105,4 @@ class WienerlinienSensor(Entity):
             ATTR_FIRST_DEPARTURE: self._firstdeparture,
             ATTR_NEXT_DEPARTURE: self._nextdeparture,
             ATTR_STOPID: self._stopID,
-            ATTR_COMPONENT: self._component,
-            ATTR_COMPONENT_VERSION: self._componentversion
         }

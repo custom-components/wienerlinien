@@ -12,7 +12,7 @@ from homeassistant.helpers.entity import Entity
 import homeassistant.helpers.config_validation as cv
 from homeassistant.components.sensor import PLATFORM_SCHEMA
 
-__version__ = '1.1.2'
+__version__ = '1.2.0'
 
 CONF_STOPS = 'stops'
 CONF_APIKEY = 'apikey'

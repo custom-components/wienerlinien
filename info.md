@@ -1,6 +1,23 @@
-_custom_component to get info about next departures._
+**Example configuration.yaml:**
 
-**A platform which allows you to get information about next departure from spesified stop.**
+```yaml
+sensor:
+  platform: wienerlinien
+  apikey: 2190400
+  firstnext: first
+  stops:
+    - '4429'
+    - '3230'
+```
 
-![Sample overview](https://raw.githubusercontent.com/custom-components/sensor.wienerlinien/master/overview.png)
+**Configuration variables:**
+
+key | description
+:--- | :---
+**platform (Required)** | The platform name.
+**apikey (Required)** | Your API key from wien.gv.at.
+**stops (Required)** | RBL stop ID's
+**firstnext (Optional)** | `first` or `next` departure.
+
+![Sample overview](https://raw.githubusercontent.com/custom-components/wienerlinien/master/overview.png)
 

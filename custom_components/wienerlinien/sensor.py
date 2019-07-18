@@ -1,108 +1,143 @@
 """
 A component which allows you to get information about next departure from spesified stop.
 For more details about this component, please refer to the documentation at
-https://github.com/HalfDecent/HA-Custom_components/wienerlinien
+https://github.com/custom-components/wienerlinien
 """
 import logging
-import requests
-import dateutil.parser
-import voluptuous as vol
 from datetime import timedelta
-from homeassistant.helpers.entity import Entity
+
 import homeassistant.helpers.config_validation as cv
+import voluptuous as vol
+import async_timeout
 from homeassistant.components.sensor import PLATFORM_SCHEMA
+from homeassistant.exceptions import PlatformNotReady
+from homeassistant.helpers.aiohttp_client import async_create_clientsession
+from homeassistant.helpers.entity import Entity
 
-__version__ = '1.2.1'
+from .const import BASE_URL, DEPARTURES
 
-CONF_STOPS = 'stops'
-CONF_APIKEY = 'apikey'
-
-ATTR_STOPID = 'stopid'
-ATTR_NEXT_DEPARTURE = 'next_departure'
-ATTR_FIRST_DEPARTURE = 'first_departure'
-ATTR_COMPONENT = 'component'
-ATTR_FRIENDLY_NAME = 'friendly_name'
-ATTR_COMPONENT_VERSION = 'component_version'
+CONF_STOPS = "stops"
+CONF_APIKEY = "apikey"
+CONF_FIRST_NEXT = "firstnext"
 
 SCAN_INTERVAL = timedelta(seconds=30)
 
-ICON = 'mdi:bus'
+PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
+    {
+        vol.Required(CONF_APIKEY): cv.string,
+        vol.Optional(CONF_STOPS, default=None): vol.All(cv.ensure_list, [cv.string]),
+        vol.Optional(CONF_FIRST_NEXT, default="first"): cv.string,
+    }
+)
 
-PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
-    vol.Required(CONF_APIKEY): cv.string,
-    vol.Optional(CONF_STOPS, default=None): 
-        vol.All(cv.ensure_list, [cv.string]),
-})
-
-BASE_URL = 'http://www.wienerlinien.at/ogd_realtime/monitor'
 
 _LOGGER = logging.getLogger(__name__)
 
-def setup_platform(hass, config, add_devices_callback, discovery_info=None):
+
+async def async_setup_platform(hass, config, add_devices_callback, discovery_info=None):
+    """Setup."""
     stops = config.get(CONF_STOPS)
     apikey = config.get(CONF_APIKEY)
+    firstnext = config.get(CONF_FIRST_NEXT)
     dev = []
     for stopid in stops:
-        dev.append(WienerlinienSensor(stopid, apikey))
+        api = CallAPI(async_create_clientsession(hass), hass.loop, apikey, stopid)
+        data = await api.get_json()
+        try:
+            name = data["data"]["monitors"][0]["locationStop"]["properties"]["title"]
+        except Exception:
+            raise PlatformNotReady()
+        dev.append(WienerlinienSensor(api, name, firstnext))
     add_devices_callback(dev, True)
 
-class WienerlinienSensor(Entity):
-    def __init__(self, stopID, apikey):
-        self._name = None
-        self._state = None
-        self._nextdeparture = 'N/A'
-        self._firstdeparture = 'N/A'
-        self._stopID = stopID
-        self._apikey = apikey
-        fetchurl = BASE_URL + '?rbl=' + self._stopID + '&sender=' + self._apikey
-        departure = requests.get(fetchurl, timeout=5).json()['data']
-        name = departure['monitors'][0]['locationStop']['properties']['title']
-        self._name = name
 
-    def update(self):
-        fetchurl = BASE_URL + '?rbl=' + self._stopID + '&sender=' + self._apikey
+class WienerlinienSensor(Entity):
+    """WienerlinienSensor."""
+
+    def __init__(self, api, name, firstnext):
+        """Initialize."""
+        self.api = api
+        self.firstnext = firstnext
+        self._name = name
+        self._state = None
+        self.attributes = {}
+
+    async def async_update(self):
+        """Update data."""
         try:
-            departure = requests.get(fetchurl, timeout=5).json()['data']
+            data = await self.api.get_json()
+            _LOGGER.debug(data)
+            if data is None:
+                return
+            data = data.get("data", {})
         except:
-            _LOGGER.debug("Error fetching new state")
-        else:
-            try:
-                departure['monitors'][0]['lines'][0]['departures']['departure'][0]['departureTime']['countdown']
-            except:
-                firstDeparture = 'N/A'
-                nextDeparture = 'N/A'
-            else:
-                firstDeparture = departure['monitors'][0]['lines'][0]['departures']['departure'][0]['departureTime']['countdown']
-                nextDeparture = departure['monitors'][0]['lines'][0]['departures']['departure'][1]['departureTime']['countdown']
-            DepartureTowards = departure['monitors'][0]['lines'][0]['towards']
-            FriendlyName = departure['monitors'][0]['locationStop']['properties']['title']
-            if firstDeparture == 'N/A':
-                self._state = DepartureTowards
-            else: 
-                self._state = ' ' + str(firstDeparture) + ' und in  ' + ' ' + str(nextDeparture) + ' Minuten Richtung '+ DepartureTowards
-            self._firstdeparture = firstDeparture
-            self._nextdeparture = nextDeparture
+            _LOGGER.debug("Could not get new state")
+            return
+
+        if data is None:
+            return
+        try:
+            line = data["monitors"][0]["lines"][0]
+            departure = line["departures"]["departure"][
+                DEPARTURES[self.firstnext]["key"]
+            ]
+            self._state = departure["departureTime"]["timeReal"]
+
+            self.attributes = {
+                "destination": line["towards"],
+                "platform": line["platform"],
+                "direction": line["direction"],
+                "name": line["name"],
+                "countdown": departure["departureTime"]["countdown"],
+            }
+        except Exception:
+            pass
 
     @property
     def name(self):
-        return self._name
+        """Return name."""
+        return DEPARTURES[self.firstnext]["name"].format(self._name)
 
     @property
     def state(self):
+        """Return state."""
         return self._state
 
     @property
     def icon(self):
-        return ICON
-
-    @property
-    def friendly_name(self):
-        return self._fiendlyname
+        """Return icon."""
+        return "mdi:bus"
 
     @property
     def device_state_attributes(self):
-        return {
-            ATTR_FIRST_DEPARTURE: self._firstdeparture,
-            ATTR_NEXT_DEPARTURE: self._nextdeparture,
-            ATTR_STOPID: self._stopID,
-        }
+        """Return attrubutes."""
+        return self.attributes
+
+    @property
+    def device_class(self):
+        """Return device_class."""
+        return "timestamp"
+
+
+class CallAPI:
+    """Call API."""
+
+    def __init__(self, session, loop, apikey, stopid):
+        """Initialize."""
+        self.session = session
+        self.loop = loop
+        self.apikey = apikey
+        self.stopid = stopid
+
+    async def get_json(self):
+        """Get json from API endpoint."""
+        value = None
+        url = BASE_URL.format(self.stopid, self.apikey)
+        try:
+            async with async_timeout.timeout(10, loop=self.loop):
+                response = await self.session.get(url)
+                value = await response.json()
+        except Exception:
+            pass
+
+        return value

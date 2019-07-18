@@ -1,0 +1,10 @@
+{
+  "domain": "wienerlinien",
+  "name": "Wienerlinien",
+  "documentation": "https://github.com/custom-components/wienerlinien",
+  "dependencies": [],
+  "codeowners": [
+    "@ludeeus"
+  ],
+  "requirements": []
+}

@@ -81,7 +81,12 @@ class WienerlinienSensor(Entity):
             departure = line["departures"]["departure"][
                 DEPARTURES[self.firstnext]["key"]
             ]
-            self._state = departure["departureTime"]["timeReal"]
+            if "timeReal" in departure["departureTime"]:
+                self._state = departure["departureTime"]["timeReal"]
+            elif "timePlanned" in departure["departureTime"]:
+                self._state = departure["departureTime"]["timePlanned"]
+            else:
+                self._state = self._state
 
             self.attributes = {
                 "destination": line["towards"],

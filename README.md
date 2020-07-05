@@ -1,28 +1,25 @@
-# custom_component to get info about next departures
+# Get information about next departures
 
-A platform which allows you to get information about next departure from spesified stop.
+A sensor platform which allows you to get information about next departure from specified stop.
 
-To get started put all the files from `/custom_components/wienerlinien/` here:
-`<config directory>/custom_components/wienerlinien/`
+To get started install this with [HACS](https://hacs.xyz/)
 
-**Example configuration.yaml:**
+## Example configuration.yaml
 
 ```yaml
 sensor:
   platform: wienerlinien
-  apikey: 2190400
   firstnext: first
   stops:
     - '4429'
     - '3230'
 ```
 
-**Configuration variables:**
+## Configuration variables
 
 key | description
-:--- | :---
+-- | --
 **platform (Required)** | The platform name.
-**apikey (Required)** | Your API key from wien.gv.at.
 **stops (Required)** | RBL stop ID's
 **firstnext (Optional)** | `first` or `next` departure.
 
@@ -30,11 +27,12 @@ key | description
 
 ![Sample overview](overview.png)
 
+## Notes
+
 You can find out the Stop ID (rbl number) thanks to [Matthias Bendel](https://github.com/mabe-at) [https://till.mabe.at/rbl/](https://till.mabe.at/rbl/)
-You can also request your own API key [here](https://www.wien.gv.at/formularserver2/user/formular.aspx?pid=3b49a23de1ff43efbc45ae85faee31db&pn=B0718725a79fb40f4bb4b7e0d2d49f1d1)
-[Mainpage of the API](https://www.data.gv.at/katalog/dataset/add66f20-d033-4eee-b9a0-47019828e698)
+
+
 This platform is using the [Wienerlinien API](http://www.wienerlinien.at) API to get the information.
 'Datenquelle: Stadt Wien – data.wien.gv.at'
 Lizenz (CC BY 3.0 AT)
-***
-Due to how `custom_components` are loaded, it is normal to see a `ModuleNotFoundError` error on first boot after adding this, to resolve it, restart Home-Assistant.
+

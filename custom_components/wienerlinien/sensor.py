@@ -61,6 +61,7 @@ class WienerlinienSensor(Entity):
         self._name = name
         self._state = None
         self.attributes = {}
+        self._unique_id = self._name
 
     async def async_update(self):
         """Update data."""
@@ -104,6 +105,11 @@ class WienerlinienSensor(Entity):
     def name(self):
         """Return name."""
         return DEPARTURES[self.firstnext]["name"].format(self._name)
+
+    @property
+    def unique_id(self):
+        """Return unique id."""
+        return self._unique_id
 
     @property
     def state(self):

@@ -42,11 +42,12 @@ async def async_setup_platform(hass, config, add_devices_callback, discovery_inf
     for stopid in stops:
         api = WienerlinienAPI(async_create_clientsession(hass), hass.loop, stopid)
         data = await api.get_json()
-        try:
-            name = data["data"]["monitors"][0]["locationStop"]["properties"]["title"]
-        except Exception:
-            raise PlatformNotReady()
-        dev.append(WienerlinienSensor(api, name, firstnext))
+        for monitor in data["data"]["monitors"]:
+            try:
+                name = monitor["locationStop"]["properties"]["title"] + " - "+ monitor["lines"][0]["name"]
+            except Exception:
+                raise PlatformNotReady()
+            dev.append(WienerlinienSensor(api, name, firstnext))
     add_devices_callback(dev, True)
 
 
@@ -76,24 +77,26 @@ class WienerlinienSensor(Entity):
         if data is None:
             return
         try:
-            line = data["monitors"][0]["lines"][0]
-            departure = line["departures"]["departure"][
-                DEPARTURES[self.firstnext]["key"]
-            ]
-            if "timeReal" in departure["departureTime"]:
-                self._state = departure["departureTime"]["timeReal"]
-            elif "timePlanned" in departure["departureTime"]:
-                self._state = departure["departureTime"]["timePlanned"]
-            else:
-                self._state = self._state
+            for monitor in data["monitors"]:
+                if self._name.endswith(monitor["lines"][0]["name"]):
+                    line = monitor["lines"][0]
+                    departure = line["departures"]["departure"][
+                        DEPARTURES[self.firstnext]["key"]
+                    ]
+                    if "timeReal" in departure["departureTime"]:
+                        self._state = departure["departureTime"]["timeReal"]
+                    elif "timePlanned" in departure["departureTime"]:
+                        self._state = departure["departureTime"]["timePlanned"]
+                    else:
+                        self._state = self._state
 
-            self.attributes = {
-                "destination": line["towards"],
-                "platform": line["platform"],
-                "direction": line["direction"],
-                "name": line["name"],
-                "countdown": departure["departureTime"]["countdown"],
-            }
+                    self.attributes = {
+                        "destination": line["towards"],
+                        "platform": line["platform"],
+                        "direction": line["direction"],
+                        "name": line["name"],
+                        "countdown": departure["departureTime"]["countdown"],
+                    }
         except Exception:
             pass
 

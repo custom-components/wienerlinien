@@ -11,13 +11,13 @@ init: homeassistant-install requirements
 
 requirements:
 ifdef HAS_APK
-	apk add libxml2-dev libxslt-dev
+	apk add libxml2-dev libxslt-dev g++ tzdata
 endif
 ifdef HAS_APT
-	sudo apt update && sudo apt install libxml2-dev libxslt-dev
+	sudo apt update && sudo apt install libxml2-dev libxslt-dev g++ tzdata
 endif
 	python3 -m pip --disable-pip-version-check install -U setuptools wheel
-	python3 -m pip --disable-pip-version-check install -r requirements.txt
+	python3 -m pip --disable-pip-version-check install --ignore-installed distlib -r requirements.txt
 
 start: ## Start the HA with the integration
 	@bash .devcontainer/integration_start;

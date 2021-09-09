@@ -4,6 +4,7 @@ logger:
   logs:
     custom_components.wienerlinien: debug
 
+debugpy:
 
 sensor:
   - platform: wienerlinien

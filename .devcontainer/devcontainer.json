@@ -1,6 +1,6 @@
 {
 	"name": "wienerlinien development",
-	"image": "ludeeus/container:integration",
+	"image": "ghcr.io/ludeeus/devcontainer/integration:stable",
 	"context": "..",
 	"postCreateCommand": "make init",
 	"appPort": [

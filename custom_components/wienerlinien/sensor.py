@@ -43,19 +43,24 @@ async def async_setup_platform(hass, config, add_devices_callback, discovery_inf
         api = WienerlinienAPI(async_create_clientsession(hass), hass.loop, stopid)
         data = await api.get_json()
         try:
-            name = data["data"]["monitors"][0]["locationStop"]["properties"]["title"]
+            monIx = 0
+            for monitor in data["data"]["monitors"]:
+                name = f'({monitor["lines"][0]["name"]}) {monitor["locationStop"]["properties"]["title"]}'
+                dev.append(WienerlinienSensor(api, name, monIx, firstnext))
+                monIx += 1
+
         except Exception:
             raise PlatformNotReady()
-        dev.append(WienerlinienSensor(api, name, firstnext))
     add_devices_callback(dev, True)
 
 
 class WienerlinienSensor(Entity):
     """WienerlinienSensor."""
 
-    def __init__(self, api, name, firstnext):
+    def __init__(self, api, name, monitor, firstnext):
         """Initialize."""
         self.api = api
+        self.monitor = monitor
         self.firstnext = firstnext
         self._name = name
         self._state = None
@@ -76,7 +81,7 @@ class WienerlinienSensor(Entity):
         if data is None:
             return
         try:
-            line = data["monitors"][0]["lines"][0]
+            line = data["monitors"][self.monitor]["lines"][0]
             departure = line["departures"]["departure"][
                 DEPARTURES[self.firstnext]["key"]
             ]

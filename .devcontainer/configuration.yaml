@@ -17,6 +17,7 @@ sensor:
     firstnext: first
     stops:
       - '1316'
+      - '127'
       - '3230'
   - platform: wienerlinien
     stops: '149'

@@ -64,6 +64,8 @@ class WienerlinienSensor(Entity):
         self.firstnext = firstnext
         self._name = name
         self._state = None
+        self._icon = "train-car"
+
         self.attributes = {}
 
     async def async_update(self):
@@ -92,6 +94,7 @@ class WienerlinienSensor(Entity):
             else:
                 self._state = self._state
 
+            self.setIcon(line["type"])
             self.attributes = {
                 "destination": line["towards"],
                 "platform": line["platform"],
@@ -101,6 +104,17 @@ class WienerlinienSensor(Entity):
             }
         except Exception:
             pass
+
+    def setIcon(self, lineType):
+        """Determines the icon type based on the typecode of the vehicle"""
+        if "ptBus" in lineType:
+            self._icon = "bus"
+        elif "ptTram" in lineType:
+            self._icon = "tram"
+        elif "ptMetro" in lineType:
+            self._icon = "subway-variant"
+        else:
+            self._icon = "train-car"
 
     @property
     def name(self):
@@ -117,7 +131,7 @@ class WienerlinienSensor(Entity):
     @property
     def icon(self):
         """Return icon."""
-        return "mdi:bus"
+        return f"mdi:{self._icon}"
 
     @property
     def device_state_attributes(self):

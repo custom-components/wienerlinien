@@ -5,8 +5,8 @@ https://github.com/custom-components/wienerlinien
 """
 import logging
 from datetime import timedelta
+from typing import Optional
 
-import async_timeout
 import homeassistant.helpers.config_validation as cv
 import voluptuous as vol
 from homeassistant.components.sensor import PLATFORM_SCHEMA
@@ -14,7 +14,8 @@ from homeassistant.exceptions import PlatformNotReady
 from homeassistant.helpers.aiohttp_client import async_create_clientsession
 from homeassistant.helpers.entity import Entity
 
-from custom_components.wienerlinien.const import BASE_URL, DEPARTURES
+from custom_components.wienerlinien.const import DEPARTURES
+from custom_components.wienerlinien.api import WienerlinienAPI
 
 CONF_STOPS = "stops"
 CONF_APIKEY = "apikey"
@@ -142,26 +143,3 @@ class WienerlinienSensor(Entity):
     def device_class(self):
         """Return device_class."""
         return "timestamp"
-
-
-class WienerlinienAPI:
-    """Call API."""
-
-    def __init__(self, session, loop, stopid):
-        """Initialize."""
-        self.session = session
-        self.loop = loop
-        self.stopid = stopid
-
-    async def get_json(self):
-        """Get json from API endpoint."""
-        value = None
-        url = BASE_URL.format(self.stopid)
-        try:
-            async with async_timeout.timeout(10, loop=self.loop):
-                response = await self.session.get(url)
-                value = await response.json()
-        except Exception:
-            pass
-
-        return value

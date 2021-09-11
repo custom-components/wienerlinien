@@ -45,7 +45,7 @@ async def async_setup_platform(hass, config, add_devices_callback, discovery_inf
         try:
             monIx = 0
             for monitor in data["data"]["monitors"]:
-                name = f'({monitor["lines"][0]["name"]}) {monitor["locationStop"]["properties"]["title"]}'
+                name = f'{monitor["locationStop"]["properties"]["title"]}'
                 dev.append(WienerlinienSensor(api, name, monIx, firstnext))
                 monIx += 1
 
@@ -96,7 +96,7 @@ class WienerlinienSensor(Entity):
                 "destination": line["towards"],
                 "platform": line["platform"],
                 "direction": line["direction"],
-                "name": line["name"],
+                "line": line["name"],
                 "countdown": departure["departureTime"]["countdown"],
             }
         except Exception:
@@ -105,7 +105,9 @@ class WienerlinienSensor(Entity):
     @property
     def name(self):
         """Return name."""
-        return DEPARTURES[self.firstnext]["name"].format(self._name)
+        return DEPARTURES[self.firstnext]["name"].format(
+            self.attributes["line"], self._name
+        )
 
     @property
     def state(self):

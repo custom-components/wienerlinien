@@ -88,13 +88,8 @@ class WienerlinienSensor(Entity):
             departure = line["departures"]["departure"][
                 DEPARTURES[self.firstnext]["key"]
             ]
-            if "timeReal" in departure["departureTime"]:
-                self._state = departure["departureTime"]["timeReal"]
-            elif "timePlanned" in departure["departureTime"]:
-                self._state = departure["departureTime"]["timePlanned"]
-            else:
-                self._state = self._state
 
+            self.setState(departure)
             self.setIcon(line["type"])
             self.attributes = {
                 "destination": line["towards"],
@@ -105,6 +100,15 @@ class WienerlinienSensor(Entity):
             }
         except Exception:
             pass
+
+    def setState(self, departure):
+        """Get the right time signal depending on the available signals"""
+        if "timeReal" in departure["departureTime"]:
+            self._state = departure["departureTime"]["timeReal"]
+        elif "timePlanned" in departure["departureTime"]:
+            self._state = departure["departureTime"]["timePlanned"]
+        else:
+            self._state = self._state
 
     def setIcon(self, lineType):
         """Determines the icon type based on the typecode of the vehicle"""

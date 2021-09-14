@@ -1,0 +1,10 @@
+<svg id="Ebene_1" data-name="Ebene 1"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 86.82 86.82">
+    <defs>
+        <style>.cls-1{fill:#fff;}.cls-2{fill:#0097d9;}</style>
+    </defs>
+    <title>s-bahn-neu.</title>
+    <circle class="cls-1" cx="43.41" cy="43.41" r="43.41"/>
+    <path class="cls-2" d="M433.93,258.22l-15,18.76a9,9,0,0,0,1.4,12.61L432,299a16.6,16.6,0,0,1,2.58,23.32L421.16,339.1a41.52,41.52,0,0,0,12.77-80.87" transform="translate(-377.33 -254.16)"/>
+    <path class="cls-2" d="M422.52,318.19a9,9,0,0,0-1.4-12.6l-11.7-9.37a16.6,16.6,0,0,1-2.6-23.33l13.47-16.82a41.51,41.51,0,0,0-12.78,80.87Z" transform="translate(-377.33 -254.16)"/>
+</svg>

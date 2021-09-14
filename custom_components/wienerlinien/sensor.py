@@ -4,8 +4,9 @@ For more details about this component, please refer to the documentation at
 https://github.com/custom-components/wienerlinien
 """
 import logging
+import requests
 from datetime import timedelta
-
+import os
 import async_timeout
 import homeassistant.helpers.config_validation as cv
 import voluptuous as vol
@@ -14,7 +15,13 @@ from homeassistant.exceptions import PlatformNotReady
 from homeassistant.helpers.aiohttp_client import async_create_clientsession
 from homeassistant.helpers.entity import Entity
 
-from custom_components.wienerlinien.const import BASE_URL, DEPARTURES
+from custom_components.wienerlinien.const import (
+    BASE_URL,
+    DEPARTURES,
+    ICONS_URL,
+    ICONS_PATH,
+    METRO_LINES,
+)
 
 CONF_STOPS = "stops"
 CONF_APIKEY = "apikey"
@@ -48,6 +55,8 @@ async def async_setup_platform(hass, config, add_devices_callback, discovery_inf
             raise PlatformNotReady()
         dev.append(WienerlinienSensor(api, name, firstnext))
     add_devices_callback(dev, True)
+
+    hass.http.register_static_path(ICONS_URL, hass.config.path(ICONS_PATH), True)
 
 
 class WienerlinienSensor(Entity):
@@ -122,9 +131,11 @@ class WienerlinienSensor(Entity):
         return f"{self._state[:-2]}:{self._state[26:]}"
 
     @property
-    def icon(self):
-        """Return icon."""
-        return f"mdi:{self._icon}"
+    def entity_picture(self):
+        if self.attributes["name"] in METRO_LINES:
+            return f"{ICONS_URL}/{self.attributes['name']}.svg"
+        else:
+            return f"{ICONS_URL}/{self._icon}.svg"
 
     @property
     def device_state_attributes(self):

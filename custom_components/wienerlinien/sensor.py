@@ -4,9 +4,7 @@ For more details about this component, please refer to the documentation at
 https://github.com/custom-components/wienerlinien
 """
 import logging
-import requests
 from datetime import timedelta
-from typing import Optional
 
 import homeassistant.helpers.config_validation as cv
 import voluptuous as vol
@@ -103,7 +101,7 @@ class WienerlinienSensor(Entity):
                 "destination": line["towards"],
                 "platform": line["platform"],
                 "direction": line["direction"],
-                "line": line["name"],
+                "name": line["name"],
                 "countdown": departure["departureTime"]["countdown"],
             }
         except Exception:
@@ -133,7 +131,7 @@ class WienerlinienSensor(Entity):
     def name(self):
         """Return name."""
         return DEPARTURES[self.firstnext]["name"].format(
-            self.attributes["line"], self._name
+            self.attributes["name"], self._name
         )
 
     @property

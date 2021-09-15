@@ -9,6 +9,7 @@ on:
       - master
   schedule:
     - cron:  '30 16 */3 * *'
+  workflow_dispatch:
 
 jobs:
   validate-hassfest:

@@ -1,6 +1,10 @@
 import async_timeout
 from custom_components.wienerlinien.const import BASE_URL
 
+import logging
+
+_LOGGER = logging.getLogger(__name__)
+
 
 class WienerlinienAPI:
     """Call API."""
@@ -19,7 +23,8 @@ class WienerlinienAPI:
             async with async_timeout.timeout(10, loop=self.loop):
                 response = await self.session.get(url)
                 value = await response.json()
-        except Exception:
-            pass
+        except ClientConnectError as err:
+            _LOGGER.warning(err)
+            return None
 
         return value

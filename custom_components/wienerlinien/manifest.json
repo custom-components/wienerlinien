@@ -7,5 +7,6 @@
   "codeowners": [
     "@ludeeus"
   ],
-  "requirements": []
+  "requirements": [],
+  "iot_class": "cloud_polling"
 }

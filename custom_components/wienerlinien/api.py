@@ -1,4 +1,5 @@
 import async_timeout
+from aiohttp import ClientConnectionError
 from custom_components.wienerlinien.const import BASE_URL
 
 import logging
@@ -23,8 +24,7 @@ class WienerlinienAPI:
             async with async_timeout.timeout(10, loop=self.loop):
                 response = await self.session.get(url)
                 value = await response.json()
-        except ClientConnectError as err:
+        except ClientConnectionError as err:
             _LOGGER.warning(err)
             return None
-
         return value

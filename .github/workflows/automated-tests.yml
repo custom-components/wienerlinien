@@ -1,5 +1,12 @@
-on: push
-name: on push
+name: Automated Tests
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+  workflow_dispatch:
+
 jobs:
   gitHubActionForPytest:
     name: GitHub Action for pytest

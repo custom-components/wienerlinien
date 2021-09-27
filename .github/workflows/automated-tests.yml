@@ -3,10 +3,40 @@ name: on push
 jobs:
   gitHubActionForPytest:
     name: GitHub Action for pytest
+    strategy:
+      matrix:
+        python-version: [3.8]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@masterx
-      - name: GitHub Action for pytest
-        uses: cclauss/GitHub-Action-for-pytest@master
+      - name: Get the repository
+        uses: actions/checkout@v2
+
+      - name: Enable version ${{ matrix.python-version }} of Python
+        uses: actions/setup-python@v2
         with:
-          args: pytest -h
+          python-version: ${{ matrix.python-version }}
+
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y python-dev pkg-config libavformat-dev libavcodec-dev libavdevice-dev libavutil-dev libswscale-dev libavresample-dev libavfilter-dev
+          make init
+
+      - name: Install dependencies for custom_components
+        run: |
+          for file in $(find custom_components/ -name "manifest.json"); do
+            cat "$file" | for req in $(jq .requirements[]);
+              do pip install $(echo "$req" | jq -r .);
+              done;
+            done
+
+      - name: Run pytest
+        run: |
+          pytest

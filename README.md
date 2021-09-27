@@ -2,6 +2,7 @@
 
 A sensor platform which allows you to get information about next departure from specified stop.
 
+
 To get started install this with [HACS](https://hacs.xyz/)
 
 ## Example configuration.yaml

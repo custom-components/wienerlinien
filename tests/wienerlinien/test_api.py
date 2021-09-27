@@ -7,6 +7,7 @@ from custom_components.wienerlinien.api import WienerlinienAPI
 
 from .fixtures import stop_response, stopCallStub
 
+
 async def test_async_update_ok(stopCallStub):
 
     api = WienerlinienAPI(stopCallStub, None, "784")

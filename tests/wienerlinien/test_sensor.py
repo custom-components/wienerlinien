@@ -61,4 +61,3 @@ async def test_alternate_monitors_on_sensor(stopCallStub):
     assert sensor2.name == f"(6) test_0 first departure"
     assert sensor1.attributes["name"] == "11"
     assert sensor2.attributes["name"] == "6"
-

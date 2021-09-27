@@ -1,0 +1,151 @@
+{
+    "data": {
+        "monitors": [
+            {
+                "locationStop": {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            16.3545427,
+                            48.1676088
+                        ]
+                    },
+                    "properties": {
+                        "name": "60201312",
+                        "title": "Stefan-Fadinger-Platz",
+                        "municipality": "Wien",
+                        "municipalityId": 90001,
+                        "type": "stop",
+                        "coordName": "WGS84",
+                        "attributes": {
+                            "rbl": 784
+                        }
+                    }
+                },
+                "lines": [
+                    {
+                        "name": "15A",
+                        "towards": "Enkplatz U Grillgasse",
+                        "direction": "H",
+                        "platform": "1",
+                        "richtungsId": "1",
+                        "barrierFree": true,
+                        "realtimeSupported": true,
+                        "trafficjam": false,
+                        "departures": {
+                            "departure": [
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-11T22:58:30.000+0200",
+                                        "timeReal": "2021-09-11T22:58:30.000+0200",
+                                        "countdown": 13
+                                    }
+                                },
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-11T23:13:30.000+0200",
+                                        "timeReal": "2021-09-11T23:13:30.000+0200",
+                                        "countdown": 28
+                                    }
+                                },
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-11T23:28:30.000+0200",
+                                        "timeReal": "2021-09-11T23:28:30.000+0200",
+                                        "countdown": 43
+                                    }
+                                },
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-11T23:43:30.000+0200",
+                                        "timeReal": "2021-09-11T23:43:30.000+0200",
+                                        "countdown": 58
+                                    }
+                                }
+                            ]
+                        },
+                        "type": "ptBusCity",
+                        "lineId": 415
+                    }
+                ],
+                "attributes": {}
+            },
+            {
+                "locationStop": {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            16.3545427,
+                            48.1676088
+                        ]
+                    },
+                    "properties": {
+                        "name": "60201312",
+                        "title": "Stefan-Fadinger-Platz",
+                        "municipality": "Wien",
+                        "municipalityId": 90001,
+                        "type": "stop",
+                        "coordName": "WGS84",
+                        "attributes": {
+                            "rbl": 784
+                        }
+                    }
+                },
+                "lines": [
+                    {
+                        "name": "65A",
+                        "towards": "Reumannplatz U",
+                        "direction": "R",
+                        "platform": "2",
+                        "richtungsId": "2",
+                        "barrierFree": true,
+                        "realtimeSupported": true,
+                        "trafficjam": false,
+                        "departures": {
+                            "departure": [
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-11T22:51:30.000+0200",
+                                        "timeReal": "2021-09-11T22:51:30.000+0200",
+                                        "countdown": 6
+                                    }
+                                },
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-11T23:06:30.000+0200",
+                                        "timeReal": "2021-09-11T23:06:30.000+0200",
+                                        "countdown": 21
+                                    }
+                                },
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-11T23:21:30.000+0200",
+                                        "timeReal": "2021-09-11T23:21:30.000+0200",
+                                        "countdown": 36
+                                    }
+                                },
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-11T23:36:30.000+0200",
+                                        "timeReal": "2021-09-11T23:36:30.000+0200",
+                                        "countdown": 51
+                                    }
+                                }
+                            ]
+                        },
+                        "type": "ptBusCity",
+                        "lineId": 465
+                    }
+                ],
+                "attributes": {}
+            }
+        ]
+    },
+    "message": {
+        "value": "OK",
+        "messageCode": 1,
+        "serverTime": "2021-09-11T22:45:28.000+0200"
+    }
+}

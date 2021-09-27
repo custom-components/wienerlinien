@@ -1,0 +1,459 @@
+{
+    "data": {
+        "monitors": [
+            {
+                "locationStop": {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            16.4147888,
+                            48.1747480
+                        ]
+                    },
+                    "properties": {
+                        "name": "60200425",
+                        "title": "Enkplatz",
+                        "municipality": "Wien",
+                        "municipalityId": 90001,
+                        "type": "stop",
+                        "coordName": "WGS84",
+                        "gate": "2",
+                        "attributes": {
+                            "rbl": 4939
+                        }
+                    }
+                },
+                "lines": [
+                    {
+                        "name": "U3",
+                        "towards": "OTTAKRING",
+                        "direction": "R",
+                        "platform": "2",
+                        "richtungsId": "2",
+                        "barrierFree": true,
+                        "realtimeSupported": true,
+                        "trafficjam": false,
+                        "departures": {
+                            "departure": [
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-24T17:47:24.000+0200",
+                                        "timeReal": "2021-09-24T17:47:24.000+0200",
+                                        "countdown": 2
+                                    }
+                                },
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-24T17:48:24.000+0200",
+                                        "timeReal": "2021-09-24T17:48:24.000+0200",
+                                        "countdown": 3
+                                    },
+                                    "vehicle": {
+                                        "name": "U3",
+                                        "towards": "OTTAKRING        ",
+                                        "direction": "R",
+                                        "richtungsId": "2",
+                                        "barrierFree": true,
+                                        "foldingRamp": true,
+                                        "realtimeSupported": true,
+                                        "trafficjam": false,
+                                        "type": "ptMetro",
+                                        "attributes": {},
+                                        "linienId": 303
+                                    }
+                                },
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-24T17:54:00.000+0200",
+                                        "countdown": 5
+                                    },
+                                    "vehicle": {
+                                        "name": "U3",
+                                        "towards": "Ottakring",
+                                        "direction": "R",
+                                        "richtungsId": "2",
+                                        "barrierFree": true,
+                                        "realtimeSupported": true,
+                                        "trafficjam": false,
+                                        "type": "ptMetro",
+                                        "attributes": {},
+                                        "linienId": 303
+                                    }
+                                },
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-24T17:56:40.000+0200",
+                                        "countdown": 8
+                                    },
+                                    "vehicle": {
+                                        "name": "U3",
+                                        "towards": "Ottakring",
+                                        "direction": "R",
+                                        "richtungsId": "2",
+                                        "barrierFree": true,
+                                        "realtimeSupported": true,
+                                        "trafficjam": false,
+                                        "type": "ptMetro",
+                                        "attributes": {},
+                                        "linienId": 303
+                                    }
+                                },
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-24T17:59:20.000+0200",
+                                        "countdown": 10
+                                    },
+                                    "vehicle": {
+                                        "name": "U3",
+                                        "towards": "Ottakring",
+                                        "direction": "R",
+                                        "richtungsId": "2",
+                                        "barrierFree": true,
+                                        "realtimeSupported": true,
+                                        "trafficjam": false,
+                                        "type": "ptMetro",
+                                        "attributes": {},
+                                        "linienId": 303
+                                    }
+                                },
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-24T18:02:00.000+0200",
+                                        "countdown": 13
+                                    },
+                                    "vehicle": {
+                                        "name": "U3",
+                                        "towards": "Ottakring",
+                                        "direction": "R",
+                                        "richtungsId": "2",
+                                        "barrierFree": true,
+                                        "realtimeSupported": true,
+                                        "trafficjam": false,
+                                        "type": "ptMetro",
+                                        "attributes": {},
+                                        "linienId": 303
+                                    }
+                                },
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-24T18:04:40.000+0200",
+                                        "countdown": 16
+                                    },
+                                    "vehicle": {
+                                        "name": "U3",
+                                        "towards": "Ottakring",
+                                        "direction": "R",
+                                        "richtungsId": "2",
+                                        "barrierFree": true,
+                                        "realtimeSupported": true,
+                                        "trafficjam": false,
+                                        "type": "ptMetro",
+                                        "attributes": {},
+                                        "linienId": 303
+                                    }
+                                },
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-24T18:07:20.000+0200",
+                                        "countdown": 18
+                                    },
+                                    "vehicle": {
+                                        "name": "U3",
+                                        "towards": "Ottakring",
+                                        "direction": "R",
+                                        "richtungsId": "2",
+                                        "barrierFree": true,
+                                        "realtimeSupported": true,
+                                        "trafficjam": false,
+                                        "type": "ptMetro",
+                                        "attributes": {},
+                                        "linienId": 303
+                                    }
+                                },
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-24T18:10:00.000+0200",
+                                        "countdown": 21
+                                    },
+                                    "vehicle": {
+                                        "name": "U3",
+                                        "towards": "Ottakring",
+                                        "direction": "R",
+                                        "richtungsId": "2",
+                                        "barrierFree": true,
+                                        "realtimeSupported": true,
+                                        "trafficjam": false,
+                                        "type": "ptMetro",
+                                        "attributes": {},
+                                        "linienId": 303
+                                    }
+                                },
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-24T18:12:40.000+0200",
+                                        "countdown": 24
+                                    },
+                                    "vehicle": {
+                                        "name": "U3",
+                                        "towards": "Ottakring",
+                                        "direction": "R",
+                                        "richtungsId": "2",
+                                        "barrierFree": true,
+                                        "realtimeSupported": true,
+                                        "trafficjam": false,
+                                        "type": "ptMetro",
+                                        "attributes": {},
+                                        "linienId": 303
+                                    }
+                                },
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-24T18:15:20.000+0200",
+                                        "countdown": 26
+                                    },
+                                    "vehicle": {
+                                        "name": "U3",
+                                        "towards": "Ottakring",
+                                        "direction": "R",
+                                        "richtungsId": "2",
+                                        "barrierFree": true,
+                                        "realtimeSupported": true,
+                                        "trafficjam": false,
+                                        "type": "ptMetro",
+                                        "attributes": {},
+                                        "linienId": 303
+                                    }
+                                },
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-24T18:18:00.000+0200",
+                                        "countdown": 29
+                                    },
+                                    "vehicle": {
+                                        "name": "U3",
+                                        "towards": "Ottakring",
+                                        "direction": "R",
+                                        "richtungsId": "2",
+                                        "barrierFree": true,
+                                        "realtimeSupported": true,
+                                        "trafficjam": false,
+                                        "type": "ptMetro",
+                                        "attributes": {},
+                                        "linienId": 303
+                                    }
+                                },
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-24T18:21:00.000+0200",
+                                        "countdown": 32
+                                    },
+                                    "vehicle": {
+                                        "name": "U3",
+                                        "towards": "Ottakring",
+                                        "direction": "R",
+                                        "richtungsId": "2",
+                                        "barrierFree": true,
+                                        "realtimeSupported": true,
+                                        "trafficjam": false,
+                                        "type": "ptMetro",
+                                        "attributes": {},
+                                        "linienId": 303
+                                    }
+                                },
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-24T18:24:00.000+0200",
+                                        "countdown": 35
+                                    },
+                                    "vehicle": {
+                                        "name": "U3",
+                                        "towards": "Ottakring",
+                                        "direction": "R",
+                                        "richtungsId": "2",
+                                        "barrierFree": true,
+                                        "realtimeSupported": true,
+                                        "trafficjam": false,
+                                        "type": "ptMetro",
+                                        "attributes": {},
+                                        "linienId": 303
+                                    }
+                                },
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-24T18:27:00.000+0200",
+                                        "countdown": 38
+                                    },
+                                    "vehicle": {
+                                        "name": "U3",
+                                        "towards": "Ottakring",
+                                        "direction": "R",
+                                        "richtungsId": "2",
+                                        "barrierFree": true,
+                                        "realtimeSupported": true,
+                                        "trafficjam": false,
+                                        "type": "ptMetro",
+                                        "attributes": {},
+                                        "linienId": 303
+                                    }
+                                },
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-24T18:30:00.000+0200",
+                                        "countdown": 41
+                                    },
+                                    "vehicle": {
+                                        "name": "U3",
+                                        "towards": "Ottakring",
+                                        "direction": "R",
+                                        "richtungsId": "2",
+                                        "barrierFree": true,
+                                        "realtimeSupported": true,
+                                        "trafficjam": false,
+                                        "type": "ptMetro",
+                                        "attributes": {},
+                                        "linienId": 303
+                                    }
+                                },
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-24T18:33:00.000+0200",
+                                        "countdown": 44
+                                    },
+                                    "vehicle": {
+                                        "name": "U3",
+                                        "towards": "Ottakring",
+                                        "direction": "R",
+                                        "richtungsId": "2",
+                                        "barrierFree": true,
+                                        "realtimeSupported": true,
+                                        "trafficjam": false,
+                                        "type": "ptMetro",
+                                        "attributes": {},
+                                        "linienId": 303
+                                    }
+                                },
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-24T18:36:00.000+0200",
+                                        "countdown": 47
+                                    },
+                                    "vehicle": {
+                                        "name": "U3",
+                                        "towards": "Ottakring",
+                                        "direction": "R",
+                                        "richtungsId": "2",
+                                        "barrierFree": true,
+                                        "realtimeSupported": true,
+                                        "trafficjam": false,
+                                        "type": "ptMetro",
+                                        "attributes": {},
+                                        "linienId": 303
+                                    }
+                                },
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-24T18:40:00.000+0200",
+                                        "countdown": 51
+                                    },
+                                    "vehicle": {
+                                        "name": "U3",
+                                        "towards": "Ottakring",
+                                        "direction": "R",
+                                        "richtungsId": "2",
+                                        "barrierFree": true,
+                                        "realtimeSupported": true,
+                                        "trafficjam": false,
+                                        "type": "ptMetro",
+                                        "attributes": {},
+                                        "linienId": 303
+                                    }
+                                },
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-24T18:44:00.000+0200",
+                                        "countdown": 55
+                                    },
+                                    "vehicle": {
+                                        "name": "U3",
+                                        "towards": "Ottakring",
+                                        "direction": "R",
+                                        "richtungsId": "2",
+                                        "barrierFree": true,
+                                        "realtimeSupported": true,
+                                        "trafficjam": false,
+                                        "type": "ptMetro",
+                                        "attributes": {},
+                                        "linienId": 303
+                                    }
+                                },
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-24T18:48:00.000+0200",
+                                        "countdown": 59
+                                    },
+                                    "vehicle": {
+                                        "name": "U3",
+                                        "towards": "Ottakring",
+                                        "direction": "R",
+                                        "richtungsId": "2",
+                                        "barrierFree": true,
+                                        "realtimeSupported": true,
+                                        "trafficjam": false,
+                                        "type": "ptMetro",
+                                        "attributes": {},
+                                        "linienId": 303
+                                    }
+                                },
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-24T18:52:00.000+0200",
+                                        "countdown": 63
+                                    },
+                                    "vehicle": {
+                                        "name": "U3",
+                                        "towards": "Ottakring",
+                                        "direction": "R",
+                                        "richtungsId": "2",
+                                        "barrierFree": true,
+                                        "realtimeSupported": true,
+                                        "trafficjam": false,
+                                        "type": "ptMetro",
+                                        "attributes": {},
+                                        "linienId": 303
+                                    }
+                                },
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-24T18:56:00.000+0200",
+                                        "countdown": 67
+                                    },
+                                    "vehicle": {
+                                        "name": "U3",
+                                        "towards": "Ottakring",
+                                        "direction": "R",
+                                        "richtungsId": "2",
+                                        "barrierFree": true,
+                                        "realtimeSupported": true,
+                                        "trafficjam": false,
+                                        "type": "ptMetro",
+                                        "attributes": {},
+                                        "linienId": 303
+                                    }
+                                }
+                            ]
+                        },
+                        "type": "ptMetro",
+                        "lineId": 303
+                    }
+                ],
+                "attributes": {}
+            }
+        ]
+    },
+    "message": {
+        "value": "OK",
+        "messageCode": 1,
+        "serverTime": "2021-09-24T17:48:28.000+0200"
+    }
+}

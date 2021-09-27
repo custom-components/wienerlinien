@@ -1,0 +1,102 @@
+{
+    "data": {
+        "monitors": [
+            {
+                "locationStop": {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            16.3144680,
+                            48.2069361
+                        ]
+                    },
+                    "properties": {
+                        "name": "60201013",
+                        "title": "Pfenninggeldgasse",
+                        "municipality": "Wien",
+                        "municipalityId": 90001,
+                        "type": "stop",
+                        "coordName": "WGS84",
+                        "attributes": {
+                            "rbl": 651
+                        }
+                    }
+                },
+                "lines": [
+                    {
+                        "name": "12A",
+                        "towards": "Schmelz, Gablenzgasse",
+                        "direction": "R",
+                        "platform": "2",
+                        "richtungsId": "2",
+                        "barrierFree": true,
+                        "realtimeSupported": true,
+                        "trafficjam": false,
+                        "departures": {
+                            "departure": [
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-21T19:03:00.000+0200",
+                                        "timeReal": "2021-09-21T19:03:58.000+0200",
+                                        "countdown": 3
+                                    }
+                                },
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-21T19:12:00.000+0200",
+                                        "timeReal": "2021-09-21T19:09:53.000+0200",
+                                        "countdown": 9
+                                    }
+                                },
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-21T19:21:00.000+0200",
+                                        "timeReal": "2021-09-21T19:20:57.000+0200",
+                                        "countdown": 20
+                                    }
+                                },
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-21T19:30:30.000+0200",
+                                        "timeReal": "2021-09-21T19:30:30.000+0200",
+                                        "countdown": 29
+                                    }
+                                },
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-21T19:41:30.000+0200",
+                                        "timeReal": "2021-09-21T19:41:30.000+0200",
+                                        "countdown": 40
+                                    }
+                                },
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-21T19:53:30.000+0200",
+                                        "timeReal": "2021-09-21T19:53:30.000+0200",
+                                        "countdown": 52
+                                    }
+                                },
+                                {
+                                    "departureTime": {
+                                        "timePlanned": "2021-09-21T20:04:30.000+0200",
+                                        "timeReal": "2021-09-21T20:04:30.000+0200",
+                                        "countdown": 63
+                                    }
+                                }
+                            ]
+                        },
+                        "type": "ptBusCity",
+                        "lineId": 412
+                    }
+                ],
+                "attributes": {}
+            }
+        ]
+    },
+    "message": {
+        "value": "OK",
+        "messageCode": 1,
+        "serverTime": "2021-09-21T19:00:31.000+0200"
+    }
+}

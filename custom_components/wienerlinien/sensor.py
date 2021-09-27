@@ -83,8 +83,9 @@ class WienerlinienSensor(Entity):
             if data is None:
                 return
             data = data.get("data", {})
-        except:
+        except Exception as err:
             _LOGGER.debug("Could not get new state")
+            _LOGGER.warn(err)
             return
 
         if data is None:
@@ -104,7 +105,8 @@ class WienerlinienSensor(Entity):
                 "name": line["name"],
                 "countdown": departure["departureTime"]["countdown"],
             }
-        except Exception:
+        except Exception as err:
+            _LOGGER.warn(err)
             pass
 
     def setState(self, departure):
@@ -137,7 +139,10 @@ class WienerlinienSensor(Entity):
     @property
     def state(self):
         """Return state."""
-        return f"{self._state[:-2]}:{self._state[26:]}"
+        if self._state != None:
+            return f"{self._state[:-2]}:{self._state[26:]}"
+        else:
+            return None
 
     @property
     def entity_picture(self):

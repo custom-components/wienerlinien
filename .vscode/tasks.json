@@ -1,0 +1,5 @@
+{
+    "label": "run pytests",
+    "type": "shell",
+    "command": "pytest"
+}

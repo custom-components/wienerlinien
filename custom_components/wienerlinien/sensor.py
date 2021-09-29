@@ -16,6 +16,7 @@ from homeassistant.helpers.entity import Entity
 from custom_components.wienerlinien.api import WienerlinienAPI
 from custom_components.wienerlinien.const import (
     DEPARTURES,
+    DOMAIN,
     ICONS_URL,
     ICONS_PATH,
     METRO_LINES,
@@ -51,7 +52,7 @@ async def async_setup_platform(hass, config, add_devices_callback, discovery_inf
             monIx = 0
             for monitor in data["data"]["monitors"]:
                 name = f'{monitor["locationStop"]["properties"]["title"]}'
-                dev.append(WienerlinienSensor(api, name, monIx, firstnext))
+                dev.append(WienerlinienSensor(api, name, monIx, firstnext, hass.bus))
                 monIx += 1
 
         except Exception:
@@ -64,7 +65,7 @@ async def async_setup_platform(hass, config, add_devices_callback, discovery_inf
 class WienerlinienSensor(Entity):
     """WienerlinienSensor."""
 
-    def __init__(self, api, name, monitor, firstnext):
+    def __init__(self, api, name, monitor, firstnext, eventbus):
         """Initialize."""
         self.api = api
         self.monitor = monitor
@@ -72,6 +73,8 @@ class WienerlinienSensor(Entity):
         self._name = name
         self._state = None
         self._icon = "train-car"
+        self._oldstate = None
+        self.eventbus = eventbus
 
         self.attributes = {}
 
@@ -105,6 +108,7 @@ class WienerlinienSensor(Entity):
                 "name": line["name"],
                 "countdown": departure["departureTime"]["countdown"],
             }
+            self.checkEventTriggers()
         except Exception as err:
             _LOGGER.warn(err)
             pass
@@ -128,6 +132,27 @@ class WienerlinienSensor(Entity):
             self._icon = "subway-variant"
         else:
             self._icon = "train-car"
+
+    def checkEventTriggers(self):
+        """Evaluate the state and attribute of the sensor to check if any events need to be fired"""
+        self.checkForNewArrival()
+
+    def checkForNewArrival(self):
+        """Check if the new arrival time has changed and trigger event"""
+
+        if self._oldstate != self._state:
+            self.eventbus.fire(
+                f"{DOMAIN}_new_arrival",
+                {
+                    "sensor": self.name,
+                    "line": self.attributes["name"],
+                    "destination": self.attributes["destination"],
+                    "oldTime": self._oldstate,
+                    "newTime": self._state,
+                },
+            )
+            self._oldstate = self._state
+        pass
 
     @property
     def name(self):

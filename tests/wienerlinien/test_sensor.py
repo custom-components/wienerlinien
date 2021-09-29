@@ -8,20 +8,20 @@ from custom_components.wienerlinien.api import WienerlinienAPI
 from .fixtures import stop_response, stopCallStub
 
 
-async def test_async_update_failed():
+async def test_async_update_failed(hass):
     wiener_linien_api = MagicMock()
     wiener_linien_api.get_json = AsyncMock(return_value=None)
 
-    sensor = WienerlinienSensor(wiener_linien_api, "test", 0, False)
+    sensor = WienerlinienSensor(wiener_linien_api, "test", 0, False, hass.bus)
     await sensor.async_update()
 
     assert sensor.state == None
     pass
 
 
-async def test_async_update_ok(stopCallStub):
+async def test_async_update_ok(stopCallStub, hass):
     api = WienerlinienAPI(stopCallStub, None, "651")
-    sensor = WienerlinienSensor(api, "test_0", 0, "first")
+    sensor = WienerlinienSensor(api, "test_0", 0, "first", hass.bus)
     await sensor.async_update()
 
     time = "2021-09-21T19:03:58.000+0200"
@@ -33,28 +33,28 @@ async def test_async_update_ok(stopCallStub):
 _LOGGER = logging.getLogger(__name__)
 
 
-async def test_seticon(stopCallStub):
+async def test_seticon(stopCallStub, hass):
     api = WienerlinienAPI(stopCallStub, None, "651")
-    sensor = WienerlinienSensor(api, "test_0", 0, "first")
+    sensor = WienerlinienSensor(api, "test_0", 0, "first", hass.bus)
     await sensor.async_update()
     assert sensor.entity_picture == "/wienerlinien/icons/bus.svg"
 
     api = WienerlinienAPI(stopCallStub, None, "4939")
-    sensor = WienerlinienSensor(api, "test_0", 0, "first")
+    sensor = WienerlinienSensor(api, "test_0", 0, "first", hass.bus)
     await sensor.async_update()
     assert sensor.entity_picture == "/wienerlinien/icons/U3.svg"
 
     api = WienerlinienAPI(stopCallStub, None, "3435")
-    sensor = WienerlinienSensor(api, "test_0", 0, "first")
+    sensor = WienerlinienSensor(api, "test_0", 0, "first", hass.bus)
     await sensor.async_update()
     assert sensor.entity_picture == "/wienerlinien/icons/tram.svg"
 
 
-async def test_alternate_monitors_on_sensor(stopCallStub):
+async def test_alternate_monitors_on_sensor(stopCallStub, hass):
     api = WienerlinienAPI(stopCallStub, None, "3435")
-    sensor1 = WienerlinienSensor(api, "test_0", 0, "first")
+    sensor1 = WienerlinienSensor(api, "test_0", 0, "first", hass.bus)
     await sensor1.async_update()
-    sensor2 = WienerlinienSensor(api, "test_0", 1, "first")
+    sensor2 = WienerlinienSensor(api, "test_0", 1, "first", hass.bus)
     await sensor2.async_update()
 
     assert sensor1.name == f"(11) test_0 first departure"

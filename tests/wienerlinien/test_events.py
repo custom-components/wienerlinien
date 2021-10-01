@@ -63,3 +63,18 @@ async def test_event_on_new_arrival(stopCallStub, hass):
 
     del stop_response[651]
     stop_response[651] = old651
+
+
+async def test_no_new_arrival_event(stopCallStub, hass):
+    evcal = []
+
+    def handler(event):
+        evcal.append(event)
+
+    hass.bus.async_listen("wienerlinien_new_arrival", handler)
+
+    api = WienerlinienAPI(stopCallStub, None, "651")
+    sensor = WienerlinienSensor(api, "test_0", 0, "first", hass.bus, False)
+    await sensor.async_update()
+    await hass.async_block_till_done()
+    assert len(evcal) == 0

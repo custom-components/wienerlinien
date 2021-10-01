@@ -25,6 +25,7 @@ from custom_components.wienerlinien.const import (
 CONF_STOPS = "stops"
 CONF_APIKEY = "apikey"
 CONF_FIRST_NEXT = "firstnext"
+CONF_EV_NEW_ARRIVAL = "newarrival"
 
 SCAN_INTERVAL = timedelta(seconds=30)
 
@@ -33,6 +34,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
         vol.Optional(CONF_APIKEY): cv.string,
         vol.Optional(CONF_STOPS, default=None): vol.All(cv.ensure_list, [cv.string]),
         vol.Optional(CONF_FIRST_NEXT, default="first"): cv.string,
+        vol.Optional(CONF_EV_NEW_ARRIVAL, default=True): cv.boolean,
     }
 )
 
@@ -44,6 +46,7 @@ async def async_setup_platform(hass, config, add_devices_callback, discovery_inf
     """Setup."""
     stops = config.get(CONF_STOPS)
     firstnext = config.get(CONF_FIRST_NEXT)
+    evNewArrival = config.get(CONF_EV_NEW_ARRIVAL)
     dev = []
     for stopid in stops:
         api = WienerlinienAPI(async_create_clientsession(hass), hass.loop, stopid)
@@ -52,7 +55,11 @@ async def async_setup_platform(hass, config, add_devices_callback, discovery_inf
             monIx = 0
             for monitor in data["data"]["monitors"]:
                 name = f'{monitor["locationStop"]["properties"]["title"]}'
-                dev.append(WienerlinienSensor(api, name, monIx, firstnext, hass.bus))
+                dev.append(
+                    WienerlinienSensor(
+                        api, name, monIx, firstnext, hass.bus, evNewArrival
+                    )
+                )
                 monIx += 1
 
         except Exception:
@@ -65,7 +72,7 @@ async def async_setup_platform(hass, config, add_devices_callback, discovery_inf
 class WienerlinienSensor(Entity):
     """WienerlinienSensor."""
 
-    def __init__(self, api, name, monitor, firstnext, eventbus):
+    def __init__(self, api, name, monitor, firstnext, eventbus, evNewArrival=True):
         """Initialize."""
         self.api = api
         self.monitor = monitor
@@ -75,6 +82,7 @@ class WienerlinienSensor(Entity):
         self._icon = "train-car"
         self._oldstate = None
         self.eventbus = eventbus
+        self.evNewArrival = evNewArrival
 
         self.attributes = {}
 
@@ -135,7 +143,8 @@ class WienerlinienSensor(Entity):
 
     def checkEventTriggers(self):
         """Evaluate the state and attribute of the sensor to check if any events need to be fired"""
-        self.checkForNewArrival()
+        if self.evNewArrival:
+            self.checkForNewArrival()
 
     def checkForNewArrival(self):
         """Check if the new arrival time has changed and trigger event"""

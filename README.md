@@ -18,19 +18,20 @@ sensor:
 
 ## Configuration variables
 
-| key                      | description                  |
-| ------------------------ | ---------------------------- |
-| **platform (Required)**  | The platform name.           |
-| **stops (Required)**     | RBL stop ID's                |
-| **firstnext (Optional)** | `first` or `next` departure. |
+| key                       | description                  |
+| ------------------------- | ---------------------------- |
+| **platform (Required)**   | The platform name.           |
+| **stops (Required)**      | RBL stop ID's                |
+| **firstnext (Optional)**  | `first` or `next` departure. |
+| **newarrival (Optional)** | flag to trigger events of new arrival times |
 
 ## Events
 
 The integration component also registers the following events with each sensor (stop):
 
-| Event                        | Trigger                         | Event Data                        |
-| ---------------------------- | ------------------------------- | --------------------------------- |
-| **wienerlinien_new_arrival** | Each time the sensor is getting  a new next arrival date.  | - `sensor` (the name of the sensor)<br>- `oldTime` (the old arrival time)<br>- `newTime` (the new arrival time)<br>- `line` (the affacted line)<br>- `destination` (the direction)     |
+| Event                        | Trigger                         | Config Flag | Event Data                        |
+| ---------------------------- | ------------------------------- | ----------- | --------------------------------- |
+| **wienerlinien_new_arrival** | Each time the sensor is getting  a new next arrival date.  | `newarrival` |  - `sensor` (the name of the sensor)<br>- `oldTime` (the old arrival time)<br>- `newTime` (the new arrival time)<br>- `line` (the affacted line)<br>- `destination` (the direction)     |
 
 ## Sample overview
 

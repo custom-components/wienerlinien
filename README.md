@@ -28,9 +28,9 @@ sensor:
 
 The integration component also registers the following events with each sensor (stop):
 
-| Event                        | Trigger                         | Event Data                        |
-| ---------------------------- | ------------------------------- | --------------------------------- |
-| **wienerlinien_new_arrival** | Each time the sensor is getting  a new next arrival date.  | - `sensor` (the name of the sensor)<br>- `oldTime` (the old arrival time)<br>- `newTime` (the new arrival time)<br>- `line` (the affacted line)<br>- `destination` (the direction)     |
+| Event                        | Trigger                         | Config Flag | Event Data                        |
+| ---------------------------- | ------------------------------- | ----------- | --------------------------------- |
+| **wienerlinien_new_arrival** | Each time the sensor is getting  a new next arrival date.  | `newarrival` |  - `sensor` (the name of the sensor)<br>- `oldTime` (the old arrival time)<br>- `newTime` (the new arrival time)<br>- `line` (the affacted line)<br>- `destination` (the direction)     |
 
 ## Sample overview
 

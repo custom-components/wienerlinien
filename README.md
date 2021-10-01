@@ -18,11 +18,12 @@ sensor:
 
 ## Configuration variables
 
-| key                      | description                  |
-| ------------------------ | ---------------------------- |
-| **platform (Required)**  | The platform name.           |
-| **stops (Required)**     | RBL stop ID's                |
-| **firstnext (Optional)** | `first` or `next` departure. |
+| key                       | description                  |
+| ------------------------- | ---------------------------- |
+| **platform (Required)**   | The platform name.           |
+| **stops (Required)**      | RBL stop ID's                |
+| **firstnext (Optional)**  | `first` or `next` departure. |
+| **newarrival (Optional)** | flag to trigger events of new arrival times |
 
 ## Events
 

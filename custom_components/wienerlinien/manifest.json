@@ -3,9 +3,11 @@
   "name": "Wienerlinien",
   "version": "1.1",
   "documentation": "https://github.com/custom-components/wienerlinien",
+  "issue_tracker": "https://github.com/custom-components/wienerlinien/issues",
   "dependencies": [],
   "codeowners": [
     "@ludeeus"
   ],
-  "requirements": []
+  "requirements": [],
+  "iot_class": "cloud_polling"
 }

@@ -2,11 +2,7 @@ name: Validate
 
 on:
   pull_request:
-    branches:
-      - master
   push:
-    branches:
-      - master
   schedule:
     - cron:  '30 16 */3 * *'
 
@@ -32,4 +28,5 @@ jobs:
       uses: "hacs/integration/action@master"
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        CATEGORY: "integration"
+        category: "integration"
+        ignore: brands

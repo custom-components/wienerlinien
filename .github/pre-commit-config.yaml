@@ -8,8 +8,8 @@ repos:
           - "--py37-plus"
 
   - repo: https://github.com/psf/black
-    rev: 19.10b0
-    hooks:
+     rev: 22.3.1
+     hooks:
       - id: black
         stages: [manual]
         args:

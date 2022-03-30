@@ -21,7 +21,7 @@ class WienerlinienAPI:
         value = None
         url = BASE_URL.format(self.stopid)
         try:
-            async with async_timeout.timeout(10, loop=self.loop):
+            async with async_timeout.timeout(10):
                 response = await self.session.get(url)
                 value = await response.json()
         except ClientConnectionError as err:

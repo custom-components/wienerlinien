@@ -1,7 +1,7 @@
 """
 A integration that allows you to get information about next departure from specified stop.
 For more details about this component, please refer to the documentation at
-https://github.com/custom-components/wienerlinien
+https://github.com/tofuSCHNITZEL/wienerlinien
 """
 import logging
 from datetime import timedelta

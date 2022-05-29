@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/asottile/pyupgrade
-    rev: v2.6.2
+    rev: v2.32.1
     hooks:
       - id: pyupgrade
         stages: [manual]
@@ -8,7 +8,7 @@ repos:
           - "--py37-plus"
 
   - repo: https://github.com/psf/black
-    rev: 19.10b0
+    rev: 22.3.0
     hooks:
       - id: black
         stages: [manual]
@@ -18,7 +18,7 @@ repos:
         files: ^((custom_components|script|tests)/.+)?[^/]+\.py$
 
   - repo: https://github.com/codespell-project/codespell
-    rev: v1.17.1
+    rev: v2.1.0
     hooks:
       - id: codespell
         stages: [manual]
@@ -27,7 +27,7 @@ repos:
           - --ignore-words-list=hass,ba,fo,mabe
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.1.0
+    rev: v4.2.0
     hooks:
       - id: check-json
         stages: [manual]

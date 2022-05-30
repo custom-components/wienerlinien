@@ -1,5 +1,5 @@
 """
-Home Assistant integration to get information about next departure from specified stop in Vienna.
+Home Assistant integration to get information about departures from a specified Wiener Linien stop. 
 
-https://github.com/tofuSCHNITZEL/wienerlinien/
+https://github.com/tofuSCHNITZEL/home-assistant-wienerlinien/
 """

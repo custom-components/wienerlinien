@@ -2,7 +2,7 @@
 
 # Get information about next departures
 
-A sensor platform which allows you to get information about next departure from specified stop.
+A sensor platform which allows you to get information about departures from a specified Wiener Linien stop.
 
 To get started install this with [HACS](https://hacs.xyz/)
 

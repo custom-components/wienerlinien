@@ -1,9 +1,9 @@
 {
   "domain": "wienerlinien",
   "name": "Wienerlinien",
-  "version": "1.2",
-  "documentation": "https://github.com/tofuSCHNITZEL/wienerlinien",
-  "issue_tracker": "https://github.com/tofuSCHNITZEL/wienerlinien/issues",
+  "version": "1.2.0",
+  "documentation": "https://github.com/tofuSCHNITZEL/home-assistant-wienerlinien",
+  "issue_tracker": "https://github.com/tofuSCHNITZEL/home-assistant-wienerlinien/issues",
   "dependencies": [],
   "codeowners": [
     "@tofuSCHNITZEL"

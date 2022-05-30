@@ -6,7 +6,6 @@
   "issue_tracker": "https://github.com/tofuSCHNITZEL/wienerlinien/issues",
   "dependencies": [],
   "codeowners": [
-    "@ludeeus",
     "@tofuSCHNITZEL"
   ],
   "requirements": [],

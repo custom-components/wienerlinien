@@ -1,3 +1,11 @@
+
+For an alternative have a look at <https://github.com/tofuSCHNITZEL/home-assistant-wienerlinien>
+
+<details>
+  <summary>Old readme contend</summary>
+
+  
+  
 # Get information about next departures
 
 A sensor platform which allows you to get information about next departure from specified stop.
@@ -35,4 +43,6 @@ You can find out the Stop ID (rbl number) thanks to [Matthias Bendel](https://gi
 This platform is using the [Wienerlinien API](http://www.wienerlinien.at) API to get the information.
 'Datenquelle: Stadt Wien – data.wien.gv.at'
 Lizenz (CC BY 3.0 AT)
+</details>
+
 
